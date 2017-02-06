@@ -1,0 +1,222 @@
+@import "bourbon"
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+html, body
+	height: 100%
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1
+	font-family: $default-font
+	overflow-x: hidden
+	color: #fff
+	background-color: #222
+
+.row>div 
+	padding: 100px 0 0px
+	display: inline-block
+	width: 100%
+
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+header 
+	padding: 26px 40px 0
+	height: 100vh
+	display: table
+	width: 100%
+	background: #39a4ec
+	background: -moz-linear-gradient(left, #39a4ec 0%, #638dec 100%)
+	background: -webkit-linear-gradient(left, #39a4ec 0%,#638dec 100%)
+	background: linear-gradient(to right, #39a4ec 0%,#638dec 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#39a4ec', endColorstr='#638dec',GradientType=1 )
+
+nav 
+	list-style-type: none
+	float: right
+	ul
+		padding: 0
+	
+	li 
+		display: inline-block
+		a 
+			color: #ffffff
+			padding: 5px 5px
+			font-size: 16px
+			font-weight: 700
+			margin: 0 15px
+			letter-spacing: 1px
+			&:hover,
+			&:focus,
+			&:active
+				text-decoration: none !important
+				color: #ffffff
+		&:last-of-type a
+			margin-right: 0
+
+.hvr-underline-from-center:before,
+.hvr-underline-from-left:before 
+	background: #fff
+	height: 2px
+
+.logo 
+	display: inline-block
+
+.logo svg 
+	width: 44px
+	height: 44px
+	transition: all .3s
+
+.logo svg:hover 
+	transform: rotate(-15deg)
+
+.header-top 
+	width: 100%
+	position: fixed
+	left: 0
+	top: 0
+	padding: 5px 40px
+	background-color: rgba(0,0,0,.5)
+	display: table
+	z-index: 10
+
+.header-content 
+	text-align: center
+	display: table-cell
+	width: 100%
+	vertical-align: middle
+
+.header-title 
+	color: #fff
+	padding-bottom: 120px
+
+.header-title h2 
+	font-weight: 400
+
+.logo, nav li 
+	display: table-cell
+	vertical-align: middle
+
+h1 
+	font-size: 48px
+
+h2 
+	font-size: 36px
+	letter-spacing: 1px
+
+h3 
+	font-size: 24px
+	font-weight: 400
+
+.text-shadow 
+	text-shadow: 5px 6px 6px rgba(0,0,0,1)
+
+.contact-form 
+	float: none
+	text-align: center
+	width: 100%
+
+.row .contact-form 
+	padding: 120px 0 100px
+
+.contact-form--wrap
+	width: 500px
+	display: inline-block
+
+.contact-form input 
+	margin-bottom: 20px
+	padding: 15px
+	width: 100%
+	color: #222
+
+.contact-form input[type="submit"] 
+	border: none
+	padding: 25px 15px
+	text-transform: uppercase
+	font-weight: 600
+	font-size: 22px
+	color: #fff
+	letter-spacing: 1px
+
+.blu-btn 
+	background-color: #39a4ec
+
+.blu-btn:hover 
+	background-color: #1A4B6C
+	transition: background-color .5s
+
+.services--wrap 
+	text-align: center
+
+.services--item img 
+	width: 108px
+
+.services--wrap h2,
+.portfolio--wrap h2,
+.contact-form--wrap h2 
+	text-transform: uppercase
+
+.services-grid 
+	margin-top: 20px
+	display: inline-block
+	width: 100%
+
+.portfolio--wrap h2 
+	text-align: center
+
+.portfolio-grid a 
+	color: #fff
+
+.portfolio-grid img 
+	width: 100%
+
+footer 
+	background: #111
+	margin-top: 40px
+
+footer a,
+footer a:hover 
+	color: #fff
+	margin: 0 10px
+
+.footer-links 
+	float: right
+
+.footer-wrap 
+	padding: 50px
+	display: inline-block
+	width: 100%
+	border-top: 1px solid rgba(255,255,255,.2)
+
+@import "media"
