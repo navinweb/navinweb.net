@@ -67,6 +67,25 @@ gulp.task('build', ['removedist', 'imagemin', 'sass', 'scripts'], function() {
 
 });
 
+gulp.task('deploy', function() {
+
+	var conn = ftp.create({
+		host:      '',
+		user:      '',
+		password:  '',
+		parallel:  10,
+		log: gutil.log
+	});
+
+	var globs = [
+	'dist/**',
+	'dist/.htaccess',
+	];
+	return gulp.src(globs, {buffer: false})
+	.pipe(conn.dest('/path'));
+
+});
+
 gulp.task('removedist', function() { return del.sync('dist'); });
 gulp.task('clearcache', function () { return cache.clearAll(); });
 
