@@ -15,55 +15,41 @@ var gulp           = require('gulp'),
 
 gulp.task('scripts', function() {
 	return gulp.src([
-		'app/libs/jquery/dist/jquery.min.js',
-		'app/js/common.js',
+		'resources/assets/libs/jquery/dist/jquery.min.js',
+		'resources/assets/js/common.js',
 		])
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify())
-	.pipe(gulp.dest('app/js'))
+	.pipe(gulp.dest('public/js'))
 });
 
 gulp.task('sass', function() {
-	return gulp.src('app/sass/**/*.sass')
+	return gulp.src('resources/assets/sass/**/*.sass')
 	.pipe(sass({
 		includePaths: bourbon.includePaths
 	}).on("error", notify.onError()))
 	.pipe(rename({suffix: '.min', prefix : ''}))
 	.pipe(autoprefixer(['last 15 versions']))
 	.pipe(cleanCSS())
-	.pipe(gulp.dest('app/css'))
+	.pipe(gulp.dest('public/css'))
 });
 
 gulp.task('watch', ['sass', 'scripts'], function() {
-	gulp.watch('app/sass/**/*.sass', ['sass']);
-	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['scripts']);
+	gulp.watch('resources/assets/sass/**/*.sass', ['sass']);
+	gulp.watch(['resources/assets/libs/**/*.js', 'resources/assets/js/common.js'], ['scripts']);
 });
 
 gulp.task('imagemin', function() {
-	return gulp.src('app/img/**/*')
+	return gulp.src('resources/assets/img/**/*')
 	.pipe(cache(imagemin()))
-	.pipe(gulp.dest('dist/img'));
+	.pipe(gulp.dest('public/img'));
 });
 
-gulp.task('build', ['removedist', 'imagemin', 'sass', 'scripts'], function() {
-
-	var buildFiles = gulp.src([
-		'app/*.html',
-		'app/*.htaccess',
-		'app/*.php',
-		]).pipe(gulp.dest('dist'));
-
-	var buildCss = gulp.src([
-		'app/css/main.min.css',
-		]).pipe(gulp.dest('dist/css'));
-
-	var buildJs = gulp.src([
-		'app/js/scripts.min.js',
-		]).pipe(gulp.dest('dist/js'));
+gulp.task('build', ['imagemin', 'sass', 'scripts'], function() {
 
 	var buildFonts = gulp.src([
-		'app/fonts/**/*',
-		]).pipe(gulp.dest('dist/fonts'));
+		'resources/assets/fonts/**/*',
+		]).pipe(gulp.dest('public/fonts'));
 
 });
 
@@ -78,15 +64,14 @@ gulp.task('deploy', function() {
 	});
 
 	var globs = [
-	'dist/**',
-	'dist/.htaccess',
+	'public/**',
+	'public/.htaccess',
 	];
 	return gulp.src(globs, {buffer: false})
 	.pipe(conn.dest('/path'));
 
 });
 
-gulp.task('removedist', function() { return del.sync('dist'); });
 gulp.task('clearcache', function () { return cache.clearAll(); });
 
 gulp.task('default', ['watch']);
