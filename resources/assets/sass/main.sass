@@ -219,4 +219,32 @@ footer a:hover
 	width: 100%
 	border-top: 1px solid rgba(255,255,255,.2)
 
+.modal>*
+	display: none
+	position: fixed
+
+.modal-text
+	padding: 10px
+	background: #fff
+	color: #000
+	text-align: center
+	font-size: 24px
+	left: 50%
+	top: 50%
+	transform: translate(-50%, -50%)
+
+.modal-bg
+	width: 100%
+	height: 100%
+	top: 0
+	left: 0
+	background: rgba(0,0,0,.8)
+	content: " "
+
+.modal-close
+    position: absolute
+    right: 5px
+    top: 5px
+    cursor: pointer
+
 @import "media"
